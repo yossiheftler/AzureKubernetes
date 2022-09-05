@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elk-configmap
+  namespace: production
+data:
+  elasticsearch.yml: |
+    cluster.name: "demo-elk"
+    network.host: 0.0.0.0
+    discovery.zen.minimum_master_nodes: 1
+    xpack.license.self_generated.type: trial
+    node.max_local_storage_nodes: 1
+    xpack.monitoring.collection.enabled: true
+    cluster.initial_master_nodes: "elkdemo"
+    discovery.zen.ping.unicast.hosts: ":9300"
+    xpack.security.enabled: false
